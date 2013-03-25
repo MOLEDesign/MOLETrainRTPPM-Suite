@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta http-equiv="refresh" content="300">
+	<title>UK PPM Viewer</title>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<link rel="stylesheet" href="my.css" />
+	<link rel="stylesheet" href="table.css" />
+	<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	<script src="my.js"></script>
+
+  <!-- User-generated css -->
+  <style>
+    
+  </style>
+
+  <!-- User-generated js -->
+  <script>
+
+    $(function() {
+        
+    });
+
+  </script>
+</head>
+<body>
+<h3> Real Time Public Performance Measure (PPM)</h3>
+
+<div id="placeholder"></div>
+<script>
+$.getJSON('http://development.moledesign.biz/node/output.json', function (data) {
+var output = '<table cellspacing="0" width="99%">';
+output += '<thead>';
+output += '<tr>';
+output += '<th>Region</th>';
+output += '<th>PPM</th>';
+output += '<th>PPM (2 hours)</th>';
+output += '<th>Trains on Time</th>';
+output += '<th>Late Trains</th>';
+output += '<th>Cancelled or significantly late</th>';
+output += '</tr>';
+output += '</thead>';
+
+output += '</tbody>';
+output += '<tr style="font-weight:bold;">';
+output += '<td>National</td>';
+output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.PPM.text + '</td>';
+output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.RollingPPM.text + '</td>';
+output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.RollingPPM.text + '</td>';
+output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.RollingPPM.text + '</td>';
+output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.RollingPPM.text + '</td>';
+output += '</tr>';
+
+for (var i in data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector) {
+output += "<tr>";
+output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].sectorDesc + "</td>";
+output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.PPM.text + "</td>";
+output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.RollingPPM.text + "</td>";
+output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].sectorDesc + "</td>";
+output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.PPM.text + "</td>";
+output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.RollingPPM.text + "</td>";
+output += "</tr>";
+}
+output += "</tbody>";
+output += "</table>";
+document.getElementById("placeholder").innerHTML = output;
+});						
+</script>
+
+<h3>
+All UK PPM Data
+</h3>
+<div id="placeholder2"></div>
+<script>
+$.getJSON('http://development.moledesign.biz/node/output.json', function (data) {
+var output = '<table cellspacing="0" width="99%">';
+output += "<thead>";
+output += "<tr>";
+output += "<th>Operator</th>";
+output += "<th>PPM</th>";
+output += "<th>PPM (2 hours)</th>";
+output += "</tr>";
+output += "</thead>";
+output += "<tbody>";
+
+for (var i in data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator) {
+output += "<tr>";
+output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].name + "</td>";
+output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].PPM.text + "</td>";
+output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].RollingPPM.text + "</td>";
+output += "</tr>";
+}
+output += "</tbody>";
+output += "</table>";
+document.getElementById("placeholder2").innerHTML = output;
+});						
+</script>
+</div>
+
+  
+</body>
+</html>
