@@ -5,31 +5,26 @@
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
+	<!-- Refresh every 5 mins -->
 	<meta http-equiv="refresh" content="300">
+	
 	<title>UK PPM Viewer</title>
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-	<link rel="stylesheet" href="my.css" />
-	<link rel="stylesheet" href="table.css" />
+	
+	<!-- define fonts -->
+	<link rel="stylesheet" href="assets/css/sourcesansproreg.css" type="text/css" charset="utf-8" />
+	<link rel="stylesheet" href="assets/css/sourcesansprosemibold.css" type="text/css" charset="utf-8" />
+	
+	<link rel="stylesheet" href="assets/css/site.css" />
+	<link rel="stylesheet" href="assets/css/table.css" />
+	
+	<!-- define scripts -->
 	<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-	<script src="my.js"></script>
-
-  <!-- User-generated css -->
-  <style>
-    
-  </style>
-
-  <!-- User-generated js -->
-  <script>
-
-    $(function() {
-        
-    });
-
-  </script>
+	<script src="assets/js/my.js"></script>
 </head>
+
 <body>
-<h3> Real Time Public Performance Measure (PPM)</h3>
+<h1> Real Time Public Performance Measure (PPM)</h1>
 
 <div id="placeholder"></div>
 <script>
@@ -72,9 +67,7 @@ document.getElementById("placeholder").innerHTML = output;
 });						
 </script>
 
-<h3>
-All UK PPM Data
-</h3>
+<h1>All UK PPM Data</h1>
 <div id="placeholder2"></div>
 <script>
 $.getJSON('http://development.moledesign.biz/node/output.json', function (data) {
