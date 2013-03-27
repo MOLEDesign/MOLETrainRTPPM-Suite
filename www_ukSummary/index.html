@@ -15,159 +15,168 @@
 	<link rel="stylesheet" href="assets/css/sourcesansproreg.css" type="text/css" charset="utf-8" />
 	<link rel="stylesheet" href="assets/css/sourcesansprosemibold.css" type="text/css" charset="utf-8" />
 	
+	<!-- site wide css -->
 	<link rel="stylesheet" href="assets/css/site.css" />
+	
+	<!-- table specific css -->
 	<link rel="stylesheet" href="assets/css/table.css" />
 	
 	<!-- define scripts -->
+	<!-- use local version of JQuery -->
 	<script src="assets/js/jquery-1.9.1.min.js"></script>
+	
+	<!-- custom scripts -->
 	<script src="assets/js/my.js"></script>
+	
 </head>
 
 <body>
 <h1> Real Time Public Performance Measure (PPM)</h1>
 
+<!-- define placeholder, JQuery will load content into this div -->
 <div id="placeholder"></div>
 <script>
-$.getJSON('http://development.moledesign.biz/node/output.json', function (data) {
-var output = '<table cellspacing="0" width="99%">';
-output += '<thead>';
-output += '<tr>';
-output += '<th>Region</th>';
-output += '<th>PPM</th>';
-output += '<th>PPM (2 hours)</th>';
-output += '<th>Total Trains</th>';
-output += '<th>Trains on Time</th>';
-output += '<th>Late Trains</th>';
-output += '<th>Cancelled or significantly late</th>';
-output += '</tr>';
-output += '</thead>';
-
-output += '<tbody>';
-output += '<tr class="highlight">';
-output += '<td>National</td>';
-output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.PPM.text + '</td>';
-output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.RollingPPM.text + '</td>';
-output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.Total + '</td>';
-output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.OnTime + '</td>';
-output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.Late + '</td>';
-output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.CancelVeryLate + '</td>';
-output += '</tr>';
-
-for (var i in data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector) {
-output += "<tr>";
-output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].sectorDesc + "</td>";
-output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.PPM.text + "</td>";
-output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.RollingPPM.text + "</td>";
-output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.Total + "</td>";
-output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.OnTime + "</td>";
-output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.Late + "</td>";
-output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.CancelVeryLate + "</td>";
-output += "</tr>";
-}
-output += "</tbody>";
-output += "</table>";
-$("#placeholder").html(output);
-});						
+	// get the JSON data gathered by the node.js
+	$.getJSON('http://development.moledesign.biz/node/output.json', function (data) {
+	var output = '<table cellspacing="0" width="99%">';
+	output += '<thead>';
+	output += '<tr>';
+	output += '<th>Region</th>';
+	output += '<th>PPM</th>';
+	output += '<th>PPM (2 hours)</th>';
+	output += '<th>Total Trains</th>';
+	output += '<th>Trains on Time</th>';
+	output += '<th>Late Trains</th>';
+	output += '<th>Cancelled or significantly late</th>';
+	output += '</tr>';
+	output += '</thead>';
+	
+	output += '<tbody>';
+	output += '<tr class="highlight">';
+	output += '<td>National</td>';
+	output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.PPM.text + '</td>';
+	output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.RollingPPM.text + '</td>';
+	output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.Total + '</td>';
+	output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.OnTime + '</td>';
+	output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.Late + '</td>';
+	output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.CancelVeryLate + '</td>';
+	output += '</tr>';
+	
+	for (var i in data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector) {
+	output += "<tr>";
+	output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].sectorDesc + "</td>";
+	output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.PPM.text + "</td>";
+	output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.RollingPPM.text + "</td>";
+	output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.Total + "</td>";
+	output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.OnTime + "</td>";
+	output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.Late + "</td>";
+	output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.CancelVeryLate + "</td>";
+	output += "</tr>";
+	}
+	output += "</tbody>";
+	output += "</table>";
+	$("#placeholder").html(output);
+	});						
 </script>
 
 <h1>All UK PPM Data</h1>
 <div id="placeholder2"></div>
 <script>
-$.getJSON('http://development.moledesign.biz/node/output.json', function (data) {
-var output = '<table cellspacing="0" width="99%">';
-output += "<thead>";
-output += "<tr>";
-output += "<th>Operator</th>";
-output += "<th width='10%'>PPM</th>";
-output += "<th width='10%'>PPM (2 hours)</th>";
-output += "<th>Operator</th>";
-output += "<th width='10%'>PPM</th>";
-output += "<th width='10%'>PPM (2 hours)</th>";
-output += "</tr>";
-output += "</thead>";
-output += "<tbody>";
+	// get the JSON data gathered by the node.js
+	$.getJSON('http://development.moledesign.biz/node/output.json', function (data) {
+	var output = '<table cellspacing="0" width="99%">';
+	output += "<thead>";
+	output += "<tr>";
+	output += "<th>Operator</th>";
+	output += "<th width='10%'>PPM</th>";
+	output += "<th width='10%'>PPM (2 hours)</th>";
+	output += "<th>Operator</th>";
+	output += "<th width='10%'>PPM</th>";
+	output += "<th width='10%'>PPM (2 hours)</th>";
+	output += "</tr>";
+	output += "</thead>";
+	output += "<tbody>";
 
-// Start loop of operators, loopcount is used to allocate 2 operators per line //
-output += "<tr>";
-var loopcount = 0;
-
-for (var i in data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator) {
-	loopcount ++;
-	var operatorcolorppm = 'red';
-	var operatorcolorrppm = 'red';
+	// Start loop of operators, loopcount is used to allocate 2 operators per line //
+	output += "<tr>";
+	var loopcount = 0;
 	
-	if (data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].PPM.rag == 'G') {
-		operatorcolorppm = 'green';
+	for (var i in data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator) {
+		loopcount ++; // increment loopcount by 1
+		var operatorcolorppm = 'red';
+		var operatorcolorrppm = 'red';
+		
+		if (data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].PPM.rag == 'G') {
+			operatorcolorppm = 'green';
+		}
+		
+		if (data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].PPM.rag == 'A') {
+			operatorcolorppm = 'yellow';
+		}
+		
+		if (data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].RollingPPM.rag == 'G') {
+			operatorcolorrppm = 'green';
+		}
+		
+		if (data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].RollingPPM.rag == 'A') {
+			operatorcolorrppm = 'yellow';
+		}
+		
+		
+		output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].name + '</td>';
+		output += '<td class="cell' + operatorcolorppm + '">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].PPM.text + '</td>';
+		output += '<td class="cell' + operatorcolorrppm + '">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].RollingPPM.text + '</td>';
+		if (loopcount % 2 ==0) {
+			output += '</tr>';
+			output += '<tr>';
+		}
 	}
+	output += "</tbody>";
+	output += "</table>";
 	
-	if (data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].PPM.rag == 'A') {
-		operatorcolorppm = 'yellow';
-	}
-	
-	if (data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].RollingPPM.rag == 'G') {
-		operatorcolorrppm = 'green';
-	}
-	
-	if (data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].RollingPPM.rag == 'A') {
-		operatorcolorrppm = 'yellow';
-	}
-	
-	
-	output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].name + '</td>';
-	output += '<td class="cell' + operatorcolorppm + '">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].PPM.text + '</td>';
-	output += '<td class="cell' + operatorcolorrppm + '">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].RollingPPM.text + '</td>';
-	if (loopcount % 2 ==0) {
-		output += '</tr>';
-		output += '<tr>';
-	}
-}
-output += "</tbody>";
-output += "</table>";
-$("#placeholder2").html(output);
-});						
+	// load the content into placeholder2 div
+	$("#placeholder2").html(output);
+	});						
 </script>
 
 
 <h1>Information</h1>
 <div id="placeholder3"></div>
 <script>
-$.getJSON('http://development.moledesign.biz/node/output.json', function (data) {
-
-
-var output = '<table cellspacing="0" width="99%">';
-output += "<tr>";
-output += "<td colspan='3'>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.WebFixedMsg2 + "</td>";
-output += "</tr>";
-output += "<tr>";
-output += "<td colspan='3'>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.WebFixedMsg1 + "</td>";
-output += "</tr>";
-
-output += "</tbody>";
-output += "</table>";
-$("#placeholder3").html(output);
-});						
+	$.getJSON('http://development.moledesign.biz/node/output.json', function (data) {
+	
+	
+	var output = '<table cellspacing="0" width="99%">';
+	output += "<tr>";
+	output += "<td colspan='3'>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.WebFixedMsg2 + "</td>";
+	output += "</tr>";
+	output += "<tr>";
+	output += "<td colspan='3'>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.WebFixedMsg1 + "</td>";
+	output += "</tr>";
+	
+	output += "</tbody>";
+	output += "</table>";
+	$("#placeholder3").html(output);
+	});						
+	</script>
+	
+	<h1>Alerts</h1>
+	<div id="placeholder4"></div>
+	<script>
+	$.getJSON('http://development.moledesign.biz/node/output.json', function (data) {
+	
+	
+	var output = '<table cellspacing="0" width="99%">';
+	output += "<tr>";
+	output += "<td colspan='3'>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.WebMsgOfMoment + "</td>";
+	output += "</tr>";
+	
+	output += "</tbody>";
+	output += "</table>";
+	$("#placeholder4").html(output);
+	});						
 </script>
 
-<h1>Alerts</h1>
-<div id="placeholder4"></div>
-<script>
-$.getJSON('http://development.moledesign.biz/node/output.json', function (data) {
-
-
-var output = '<table cellspacing="0" width="99%">';
-output += "<tr>";
-output += "<td colspan='3'>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.WebMsgOfMoment + "</td>";
-output += "</tr>";
-
-output += "</tbody>";
-output += "</table>";
-$("#placeholder4").html(output);
-});						
-</script>
-
-</div>
-
-  
 </body>
 
 </html>
