@@ -84,15 +84,18 @@ output += "</tr>";
 output += "</thead>";
 output += "<tbody>";
 
-for (var i in data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator) {
+// Start loop of operators, loopcount is used to allocate 2 operators per line //
 output += "<tr>";
-output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].name + "</td>";
-output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].PPM.text + "</td>";
-output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].RollingPPM.text + "</td>";
-output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].name + "</td>";
-output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].PPM.text + "</td>";
-output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].RollingPPM.text + "</td>";
-output += "</tr>";
+var loopcount = 0;
+for (var i in data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator) {
+	loopcount ++;
+	output += "<td>" + loopcount + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].name + "</td>";
+	output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].PPM.text + "</td>";
+	output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].RollingPPM.text + "</td>";
+	if (loopcount % 2 ==0) {
+		output += "</tr>";
+		output += "<tr>";
+	}
 }
 output += "</tbody>";
 output += "</table>";
