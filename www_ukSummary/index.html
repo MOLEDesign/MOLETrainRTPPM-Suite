@@ -26,6 +26,10 @@
 <body>
 <h1> Real Time Public Performance Measure (PPM)</h1>
 
+<div class="tiptext">Text
+<div class="description"> Here is the big fat description box</div>
+</div>
+
 <div id="placeholder"></div>
 <script>
 $.getJSON('http://development.moledesign.biz/node/output.json', function (data) {
@@ -41,7 +45,7 @@ output += '<th>Cancelled or significantly late</th>';
 output += '</tr>';
 output += '</thead>';
 
-output += '</tbody>';
+output += '<tbody>';
 output += '<tr class="highlight">';
 output += '<td>National</td>';
 output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.PPM.text + '</td>';
@@ -89,12 +93,17 @@ output += "<tr>";
 var loopcount = 0;
 for (var i in data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator) {
 	loopcount ++;
-	output += "<td>" + loopcount + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].name + "</td>";
-	output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].PPM.text + "</td>";
-	output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].RollingPPM.text + "</td>";
+	
+	
+
+	
+	output += '<td><div class="tiptext">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].name;
+	output += '<div class="description">Train Info</div></div></td>';
+	output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].PPM.text + '</td>';
+	output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].RollingPPM.text + '</td>';
 	if (loopcount % 2 ==0) {
-		output += "</tr>";
-		output += "<tr>";
+		output += '</tr>';
+		output += '<tr>';
 	}
 }
 output += "</tbody>";
@@ -145,4 +154,5 @@ $("#placeholder4").html(output);
 
   
 </body>
+
 </html>
