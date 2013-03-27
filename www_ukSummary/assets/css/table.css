@@ -31,6 +31,8 @@ table {
 }
 table th {
 	font-family: 'source_sans_prosemibold';
+	font-size:16px;
+	font-weight:500;
 	padding:5px 5px 5px 5px;
 	border-top:1px solid #fafafa;
 	border-bottom:1px solid #e0e0e0;
@@ -87,10 +89,3 @@ table tr:last-child td:last-child {
 	-webkit-border-bottom-right-radius:3px;
 	border-bottom-right-radius:3px;
 }
-table tr:hover td {
-	background: #f2f2f2;
-	background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
-	background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);	
-	color : #333;
-}
-
