@@ -26,10 +26,6 @@
 <body>
 <h1> Real Time Public Performance Measure (PPM)</h1>
 
-<div class="tiptext">Text
-<div class="description"> Here is the big fat description box</div>
-</div>
-
 <div id="placeholder"></div>
 <script>
 $.getJSON('http://development.moledesign.biz/node/output.json', function (data) {
@@ -50,6 +46,7 @@ output += '<tr class="highlight">';
 output += '<td>National</td>';
 output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.PPM.text + '</td>';
 output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.RollingPPM.text + '</td>';
+output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.RollingPPM.text + '</td>';
 output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.OnTime + '</td>';
 output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.Late + '</td>';
 output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.CancelVeryLate + '</td>';
@@ -60,9 +57,9 @@ output += "<tr>";
 output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].sectorDesc + "</td>";
 output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.PPM.text + "</td>";
 output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.RollingPPM.text + "</td>";
-output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].sectorDesc + "</td>";
-output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.PPM.text + "</td>";
-output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.RollingPPM.text + "</td>";
+output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].sectorPPM.OnTime + "</td>";
+output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.Late + "</td>";
+output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.CancelVeryLate + "</td>";
 output += "</tr>";
 }
 output += "</tbody>";
@@ -79,11 +76,11 @@ var output = '<table cellspacing="0" width="99%">';
 output += "<thead>";
 output += "<tr>";
 output += "<th>Operator</th>";
-output += "<th>PPM</th>";
-output += "<th>PPM (2 hours)</th>";
+output += "<th width='10%'>PPM</th>";
+output += "<th width='10%'>PPM (2 hours)</th>";
 output += "<th>Operator</th>";
-output += "<th>PPM</th>";
-output += "<th>PPM (2 hours)</th>";
+output += "<th width='10%'>PPM</th>";
+output += "<th width='10%'>PPM (2 hours)</th>";
 output += "</tr>";
 output += "</thead>";
 output += "<tbody>";
@@ -91,15 +88,21 @@ output += "<tbody>";
 // Start loop of operators, loopcount is used to allocate 2 operators per line //
 output += "<tr>";
 var loopcount = 0;
+
 for (var i in data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator) {
 	loopcount ++;
+	var operatorcolor = 'red';
 	
+	if (data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].PPM.rag == 'G') {
+		operatorcolor = 'green';
+	}
 	
-
+	if (data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].PPM.rag == 'A') {
+		operatorcolor = 'yellow';
+	}
 	
-	output += '<td><div class="tiptext">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].name;
-	output += '<div class="description">Train Info</div></div></td>';
-	output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].PPM.text + '</td>';
+	output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].name + '</td>';
+	output += '<td class="cell' + operatorcolor + '">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].PPM.text + '</td>';
 	output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].RollingPPM.text + '</td>';
 	if (loopcount % 2 ==0) {
 		output += '</tr>';
