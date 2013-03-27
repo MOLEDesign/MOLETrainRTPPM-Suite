@@ -31,6 +31,8 @@ table {
 }
 table th {
 	font-family: 'source_sans_prosemibold';
+	font-size:16px;
+	font-weight:500;
 	padding:5px 5px 5px 5px;
 	border-top:1px solid #fafafa;
 	border-bottom:1px solid #e0e0e0;
@@ -67,11 +69,8 @@ table td {
 	border-top: 1px solid #ffffff;
 	border-bottom:1px solid #e0e0e0;
 	border-left: 1px solid #e0e0e0;
-
-	background: #fafafa;
-	background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
-	background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
 }
+
 table tr.even td {
 	background: #f6f6f6;
 	background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
@@ -90,9 +89,3 @@ table tr:last-child td:last-child {
 	-webkit-border-bottom-right-radius:3px;
 	border-bottom-right-radius:3px;
 }
-table tr:hover td {
-	background: #f2f2f2;
-	background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
-	background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);	
-}
-

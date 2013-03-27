@@ -38,3 +38,18 @@ h5 {
 h6 {
 	font-size:15px;
 }
+
+.cellgreen {
+	background-color:#0F0;
+	color:#000;
+}
+
+.cellred {
+	background-color:#F00;
+	color:#FFF;
+}
+
+.cellyellow {
+	background-color:#FF0;
+	color:#000;
+}
