@@ -77,12 +77,18 @@ output += "<tr>";
 output += "<th>Operator</th>";
 output += "<th>PPM</th>";
 output += "<th>PPM (2 hours)</th>";
+output += "<th>Operator</th>";
+output += "<th>PPM</th>";
+output += "<th>PPM (2 hours)</th>";
 output += "</tr>";
 output += "</thead>";
 output += "<tbody>";
 
 for (var i in data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator) {
 output += "<tr>";
+output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].name + "</td>";
+output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].PPM.text + "</td>";
+output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].RollingPPM.text + "</td>";
 output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].name + "</td>";
 output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].PPM.text + "</td>";
 output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].RollingPPM.text + "</td>";
@@ -93,6 +99,45 @@ output += "</table>";
 document.getElementById("placeholder2").innerHTML = output;
 });						
 </script>
+
+
+<h1>Information</h1>
+<div id="placeholder3"></div>
+<script>
+$.getJSON('http://development.moledesign.biz/node/output.json', function (data) {
+
+
+var output = '<table cellspacing="0" width="99%">';
+output += "<tr>";
+output += "<td colspan='3'>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.WebFixedMsg2 + "</td>";
+output += "</tr>";
+output += "<tr>";
+output += "<td colspan='3'>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.WebFixedMsg1 + "</td>";
+output += "</tr>";
+
+output += "</tbody>";
+output += "</table>";
+document.getElementById("placeholder3").innerHTML = output;
+});						
+</script>
+
+<h1>Alerts</h1>
+<div id="placeholder4"></div>
+<script>
+$.getJSON('http://development.moledesign.biz/node/output.json', function (data) {
+
+
+var output = '<table cellspacing="0" width="99%">';
+output += "<tr>";
+output += "<td colspan='3'>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.WebMsgOfMoment + "</td>";
+output += "</tr>";
+
+output += "</tbody>";
+output += "</table>";
+document.getElementById("placeholder4").innerHTML = output;
+});						
+</script>
+
 </div>
 
   
