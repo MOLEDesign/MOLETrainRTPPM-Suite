@@ -35,7 +35,7 @@ $(window).load(function() {
 		}
 		placeholder_output += '</tbody>';
 		placeholder_output += '</table>';
-		$("#placeholder1").html(placeholder_output);
+		$("#placeholder").html(placeholder_output);
 	
 		var placeholder1_output = '<table cellspacing="0" width="99%">';
 		placeholder1_output += "<thead>";
@@ -80,7 +80,7 @@ $(window).load(function() {
 		placeholder1_output += "</table>";
 		
 		// load the content into placeholder2 div
-		$("#placeholder2").html(placeholder1_output);
+		$("#placeholder1").html(placeholder1_output);
 		
 		var placeholder3_output = '<table cellspacing="0" width="99%">';
 		placeholder3_output += '<tr>';
@@ -92,7 +92,7 @@ $(window).load(function() {
 		
 		placeholder3_output += '</tbody>';
 		placeholder3_output += '</table>';
-		$("#placeholder3").html(placeholder3_output);	
+		$("#placeholder3").html(placeholder3_output);
 		
 		var placeholder4_output = '<table cellspacing="0" width="99%">';
 		placeholder4_output += "<tr>";
