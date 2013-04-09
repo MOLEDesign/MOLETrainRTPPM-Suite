@@ -14,8 +14,8 @@ $(window).load(function() {
 		placeholder_output += '<thead>';
 		placeholder_output += '<tr>';
 		placeholder_output += '<th>Region</th>';
-		placeholder_output += '<th>PPM</th>';
-		placeholder_output += '<th>PPM (2 hours)</th>';
+		placeholder_output += '<th width="20%">PPM</th>';
+		placeholder_output += '<th width="20%">PPM (2 hours)</th>';
 		placeholder_output += '</tr>';
 		placeholder_output += '</thead>';
 		
@@ -41,8 +41,8 @@ $(window).load(function() {
 		placeholder1_output += "<thead>";
 		placeholder1_output += "<tr>";
 		placeholder1_output += "<th>Operator</th>";
-		placeholder1_output += "<th width='10%'>PPM</th>";
-		placeholder1_output += "<th width='10%'>PPM (2 hours)</th>";
+		placeholder1_output += "<th width='20%'>PPM</th>";
+		placeholder1_output += "<th width='20%'>PPM (2 hours)</th>";
 		placeholder1_output += "</tr>";
 		placeholder1_output += "</thead>";
 		placeholder1_output += "<tbody>";
@@ -84,10 +84,10 @@ $(window).load(function() {
 		
 		var placeholder3_output = '<table cellspacing="0" width="99%">';
 		placeholder3_output += '<tr>';
-		placeholder3_output += '<td colspan="3">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.WebFixedMsg2 + '</td>';
+		placeholder3_output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.WebFixedMsg2 + '</td>';
 		placeholder3_output += '</tr>';
 		placeholder3_output += '<tr>';
-		placeholder3_output += '<td colspan="3">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.WebFixedMsg1 + '</td>';
+		placeholder3_output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.WebFixedMsg1 + '</td>';
 		placeholder3_output += '</tr>';
 		
 		placeholder3_output += '</tbody>';
@@ -96,12 +96,64 @@ $(window).load(function() {
 		
 		var placeholder4_output = '<table cellspacing="0" width="99%">';
 		placeholder4_output += "<tr>";
-		placeholder4_output += "<td colspan='3'>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.WebMsgOfMoment + "</td>";
+		placeholder4_output += "<td>" + data.RTPPMDataMsgV1.RTPPMData.NationalPage.WebMsgOfMoment + "</td>";
 		placeholder4_output += "</tr>";
 		
 		placeholder4_output += "</tbody>";
 		placeholder4_output += "</table>";
 		$("#placeholder4").html(placeholder4_output);	
+		
+			var opplaceholder2_output = '<table cellspacing="0" width="99%">';
+			opplaceholder2_output += "<thead>";
+			opplaceholder2_output += "<tr>";
+			opplaceholder2_output += "<th>Operator</th>";
+			opplaceholder2_output += "<th width='20%'>PPM</th>";
+			opplaceholder2_output += "<th width='20%'>PPM (2 hours)</th>";
+			opplaceholder2_output += "</tr>";
+			opplaceholder2_output += "</thead>";
+			opplaceholder2_output += "<tbody>";
+		
+			// Start loop of operators, loopcount is used to allocate 2 operators per line //
+			opplaceholder2_output += "<tr>";
+			var loopcount = 0;
+			
+			for (var i in data.RTPPMDataMsgV1.RTPPMData.OperatorPage) {
+				if (data.RTPPMDataMsgV1.RTPPMData.OperatorPage[i].Operator.code == '25') {
+					for (var j in data.RTPPMDataMsgV1.RTPPMData.OperatorPage[i].OprServiceGrp) {
+					var operatorcolorppm = 'red';
+					var operatorcolorrppm = 'red';
+					
+					if (data.RTPPMDataMsgV1.RTPPMData.OperatorPage[i].OprServiceGrp[j].PPM.rag == 'G') {
+						operatorcolorppm = 'green';
+					}
+					
+					if (data.RTPPMDataMsgV1.RTPPMData.OperatorPage[i].OprServiceGrp[j].PPM.rag == 'A') {
+						operatorcolorppm = 'yellow';
+					}
+					
+					if (data.RTPPMDataMsgV1.RTPPMData.OperatorPage[i].OprServiceGrp[j].RollingPPM.rag == 'G') {
+						operatorcolorrppm = 'green';
+					}
+					
+					if (data.RTPPMDataMsgV1.RTPPMData.OperatorPage[i].OprServiceGrp[j].RollingPPM.rag == 'A') {
+						operatorcolorrppm = 'yellow';
+					}
+					
+					
+					opplaceholder2_output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.OperatorPage[i].OprServiceGrp[j].name +'</td>';
+					opplaceholder2_output += '<td class="cell' + operatorcolorppm + '">' + data.RTPPMDataMsgV1.RTPPMData.OperatorPage[i].OprServiceGrp[j].PPM.text + '</td>';
+					opplaceholder2_output += '<td class="cell' + operatorcolorrppm + '">' + data.RTPPMDataMsgV1.RTPPMData.OperatorPage[i].OprServiceGrp[j].RollingPPM.text + '</td>';
+					opplaceholder2_output += "</tr>";
+					}
+				}
+			}
+			opplaceholder2_output += "</tbody>";
+			opplaceholder2_output += "</table>";
+	
+			
+			// load the content into placeholder2 div
+			$("#opplaceholder2").html(opplaceholder2_output);		
+		
 		
 	});
 });
