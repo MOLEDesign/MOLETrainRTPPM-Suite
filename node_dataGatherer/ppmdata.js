@@ -1,7 +1,7 @@
 var fs = require('fs'),
     StompClient = require('stomp-client').StompClient,
-	secure = require('./secure.js'),
 	mysql = require('mysql');
+	secure = require('./secure.js');
 	
 	
 var topic = 'RTPPM_ALL';
@@ -11,14 +11,6 @@ var destination = '/topic/' + topic;
 // Define feed security
 var username = secure.username;
 var password = secure.password;
-
-// Define MYSQL connection
-var mysqlclient = mysql.createClient({
-	user: secure.database_username,
-	password: secure.database_password,
-	host: secure.database_host
-});
-
 
 
 client = new StompClient(datafeed, 61618, username, password, '1.0');
@@ -33,6 +25,11 @@ client.connect(function(sessionId) {
 				console.log(err);
 			} else {
 				console.log("The file was saved!");
+				client.disconnect(function() {
+					console.log('Disconnected');
+				});
+				// Add data to MYSQL
+				console.log('Adding data to MYSQL');
 			}
 		}); 
     });
