@@ -102,6 +102,55 @@ $(window).load(function() {
 		placeholder4_output += "</tbody>";
 		placeholder4_output += "</table>";
 		$("#placeholder4").html(placeholder4_output);	
+
+			var opplaceholder1_output = '<table cellspacing="0" width="99%">';
+			opplaceholder1_output += "<thead>";
+			opplaceholder1_output += "<tr>";
+			opplaceholder1_output += "<th></th>";
+			opplaceholder1_output += "<th width='20%'>PPM</th>";
+			opplaceholder1_output += "<th width='20%'>PPM (2 hours)</th>";
+			opplaceholder1_output += "</tr>";
+			opplaceholder1_output += "</thead>";
+			opplaceholder1_output += "<tbody>";
+		
+			// Start loop of operators, loopcount is used to allocate 2 operators per line //
+			opplaceholder1_output += "<tr>";
+			var loopcount = 0;
+			
+			for (var i in data.RTPPMDataMsgV1.RTPPMData.OperatorPage) {
+				if (data.RTPPMDataMsgV1.RTPPMData.OperatorPage[i].Operator.code == '25') {
+					var operatorcolorppm = 'red';
+					var operatorcolorrppm = 'red';
+					
+					if (data.RTPPMDataMsgV1.RTPPMData.OperatorPage[i].Operator.PPM.rag == 'G') {
+						operatorcolorppm = 'green';
+					}
+					
+					if (data.RTPPMDataMsgV1.RTPPMData.OperatorPage[i].Operator.PPM.rag == 'A') {
+						operatorcolorppm = 'yellow';
+					}
+					
+					if (data.RTPPMDataMsgV1.RTPPMData.OperatorPage[i].Operator.RollingPPM.rag == 'G') {
+						operatorcolorrppm = 'green';
+					}
+					
+					if (data.RTPPMDataMsgV1.RTPPMData.OperatorPage[i].Operator.RollingPPM.rag == 'A') {
+						operatorcolorrppm = 'yellow';
+					}
+					
+					
+					opplaceholder1_output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.OperatorPage[i].Operator.name +'</td>';
+					opplaceholder1_output += '<td class="cell' + operatorcolorppm + '">' + data.RTPPMDataMsgV1.RTPPMData.OperatorPage[i].Operator.PPM.text + '</td>';
+					opplaceholder1_output += '<td class="cell' + operatorcolorrppm + '">' + data.RTPPMDataMsgV1.RTPPMData.OperatorPage[i].Operator.RollingPPM.text + '</td>';
+					opplaceholder1_output += "</tr>";
+				}
+			}
+			opplaceholder1_output += "</tbody>";
+			opplaceholder1_output += "</table>";
+	
+			
+			// load the content into placeholder2 div
+			$("#opplaceholder1").html(opplaceholder1_output);
 		
 			var opplaceholder2_output = '<table cellspacing="0" width="99%">';
 			opplaceholder2_output += "<thead>";
