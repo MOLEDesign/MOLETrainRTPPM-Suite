@@ -8,8 +8,16 @@ var topic = 'RTPPM_ALL';
 var datafeed = 'datafeeds.networkrail.co.uk';
 var destination = '/topic/' + topic;
 
-var username = user.username;
-var password = user.password;
+// Define feed security
+var username = secure.username;
+var password = secure.password;
+
+// Define MYSQL connection
+var mysqlclient = mysql.createClient({
+	user: secure.database_username,
+	password: secure.database_password,
+	host: secure.database_host
+});
 
 
 
