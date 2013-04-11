@@ -1,13 +1,17 @@
-var prettyjson = require('prettyjson'),
-	fs = require('fs'),
-    StompClient = require('stomp-client').StompClient;
+var fs = require('fs'),
+    StompClient = require('stomp-client').StompClient,
+	secure = require('./secure.js'),
+	mysql = require('mysql');
+	
 	
 var topic = 'RTPPM_ALL';
 var datafeed = 'datafeeds.networkrail.co.uk';
 var destination = '/topic/' + topic;
 
-var username = 'morgan.leecy@firstgroup.com';
-var password = 'NCC!701d';
+var username = user.username;
+var password = user.password;
+
+
 
 client = new StompClient(datafeed, 61618, username, password, '1.0');
 
