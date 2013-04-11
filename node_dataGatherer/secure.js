@@ -1,6 +1,6 @@
 // JavaScript Document
 
-var username = '(username)';
+var username = '(username no no no )'; 
 var password = '(password)';
 
 var database_host ='(database host)';
