@@ -1,9 +1,9 @@
 // JavaScript Document
 
-var username = 'morgan.leecy@firstgroup.com'; 
-var password = 'NCC1701d';
+exports.username = "morgan.leecy@firstgroup.com"; 
+exports.password = "NCC!701d";
 
-var database_host ='localhost';
-var database_name ='nodeRTPPM';
-var database_username ='nodeRTPPM';
-var database_password ='SP8BsvsEHwQndeA4';
+exports.database_host ='localhost';
+exports.database_name ='nodeRTPPM';
+exports.database_username ='nodeRTPPM';
+exports.database_password ='SP8BsvsEHwQndeA4';
