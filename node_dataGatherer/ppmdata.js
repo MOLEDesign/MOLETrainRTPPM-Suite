@@ -1,6 +1,8 @@
 var fs = require('fs'),
     StompClient = require('stomp-client').StompClient,
-	secure = require('./secure.js');
+	secure = require('./secure.js'),
+	mysql = require('mysql');
+	
 	
 var topic = 'RTPPM_ALL';
 var datafeed = 'datafeeds.networkrail.co.uk';
@@ -8,6 +10,8 @@ var destination = '/topic/' + topic;
 
 var username = user.username;
 var password = user.password;
+
+
 
 client = new StompClient(datafeed, 61618, username, password, '1.0');
 
