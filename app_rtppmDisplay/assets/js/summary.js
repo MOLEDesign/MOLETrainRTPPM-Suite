@@ -16,6 +16,11 @@ $(window).load(function() {
 		placeholder_output += '<th>Region</th>';
 		placeholder_output += '<th width="20%">PPM</th>';
 		placeholder_output += '<th width="20%">PPM (2 hours)</th>';
+		placeholder_output += '<th class="landscapeonly">Total Trains</th>';
+		placeholder_output += '<th class="landscapeonly">Trains on Time</th>';
+		placeholder_output += '<th class="landscapeonly">Late</th>';
+		placeholder_output += '<th class="landscapeonly">Cancelled</th>';
+		
 		placeholder_output += '</tr>';
 		placeholder_output += '</thead>';
 		
@@ -24,6 +29,12 @@ $(window).load(function() {
 		placeholder_output += '<td>National</td>';
 		placeholder_output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.PPM.text + '</td>';
 		placeholder_output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.RollingPPM.text + '</td>';
+		placeholder_output += '<td class="landscapeonly">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.Total + '</td>';
+		placeholder_output += '<td class="landscapeonly">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.OnTime + '</td>';
+		placeholder_output += '<td class="landscapeonly">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.Late + '</td>';
+		placeholder_output += '<td class="landscapeonly">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.NationalPPM.CancelVeryLate + '</td>';
+	
+		
 		placeholder_output += '</tr>';
 		
 		for (var i in data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector) {
@@ -31,6 +42,12 @@ $(window).load(function() {
 		placeholder_output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].sectorDesc + '</td>';
 		placeholder_output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.PPM.text + '</td>';
 		placeholder_output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.RollingPPM.text + '</td>';
+		placeholder_output += '<td class="landscapeonly">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.Total + '</td>';
+		placeholder_output += '<td class="landscapeonly">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.OnTime + '</td>';
+		placeholder_output += '<td class="landscapeonly">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.Late + '</td>';
+		placeholder_output += '<td class="landscapeonly">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Sector[i].SectorPPM.CancelVeryLate + '</td>';
+		
+		
 		placeholder_output += '</tr>';
 		}
 		placeholder_output += '</tbody>';
