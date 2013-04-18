@@ -278,6 +278,6 @@ function closestEnabledButton( element ) {
 function checkiPadStandAlone(){
 	if(window.navigator.standalone == false) {
 		$('.page1').css('display','none');
-		$('body').css('background-color','white').append('<img  src="assets/images/template/add_to_homescreen_fault.png?v=1"/>');
+		$('body').css('background-color','white').append('<img  src="../images/template/add_to_homescreen_fault.png?v=1"/>');
 	}
 }
