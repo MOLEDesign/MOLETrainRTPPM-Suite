@@ -16,7 +16,7 @@ var password = secure.password;
 
 var connection = mysql.createConnection({
 	host		: secure.database_host,
-	user		: secure.database_username,
+	user		: secure.database_user,
 	password	: secure.database_password,
 	database	: secure.database_name,
 });
@@ -37,20 +37,10 @@ client.connect(function(sessionId) {
 				client.disconnect(function() {
 					console.log('Disconnected');
 				});
+				// Add data to MYSQL
+				console.log('Adding data to MYSQL');
 			}
-		});
-		
-		// write information to MYSQL
-		//var ppmdata = require('./output');
-		//var JSONtimestamp = JSON.parse(ppmdata.RTPPMDataMsgV1.timestamp );
-		connection.connect();
-		console.log('Writing to MYSQL');
-		//var insertppm = connection.query(
-		//	'INSERT INTO overallppm '+
-		//	'SET timestamp="' + JSONtimestamp + '", ppm="99", rollingppm="98"'
-		//);
-		connection.end();
-		// end write
+		}); 
     });
 	// end subscription	
 });
