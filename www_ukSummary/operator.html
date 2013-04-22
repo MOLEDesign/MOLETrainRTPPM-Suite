@@ -7,7 +7,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		
 		<!-- Refresh every 5 mins -->
-		<meta http-equiv="refresh" content="300">
+		<meta http-equiv="refresh" content="120;URL='index.html'">
 		
 		<title>UK PPM Viewer</title>
 		
@@ -26,19 +26,24 @@
 		<script src="assets/js/jquery-1.9.1.min.js"></script>
 		
 		<!-- custom scripts -->
+		<script src="assets/js/functions.js"></script>
 		<script src="assets/js/detail.js"></script>
 		
 	</head>
 
 	<body>
-		<h1>Real Time Public Performance Measure (PPM)</h1>
+	<span class="siteheading"><div id="timestamp_placeholder"></div></span>
 		
-		<h1>Operator Summary</h1>
+		<!-- define placeholder, JQuery will load content into this div -->
 		<div id="opplaceholder1"></div>
-		
-		<h1>Areas</h1>
+		<p></p>
 		<div id="opplaceholder2"></div>
-	
+		<p></p>
+
+		<div id="placeholder3"></div>
+		<p></p>
+		<div id="placeholder4"></div>
+		
 	</body>
 
 </html>
