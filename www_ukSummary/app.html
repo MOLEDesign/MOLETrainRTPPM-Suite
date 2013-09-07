@@ -5,11 +5,9 @@
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<link rel="apple-touch-icon" href="apple-touch-icon.png" />
 	<title>UK PPM Viewer</title>
 	<link rel="stylesheet" href="https://s3.amazonaws.com/codiqa-cdn/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 	<link rel="stylesheet" href="my.css" />
-	<link rel="stylesheet" href="table.css" />
 	<script src="https://s3.amazonaws.com/codiqa-cdn/jquery-1.7.2.min.js"></script>
 	<script src="https://s3.amazonaws.com/codiqa-cdn/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	<script src="my.js"></script>
@@ -25,10 +23,8 @@
 		  </h3>
 		</div>
 	  <div data-role="content">
-	  <div id="timestamp_placeholder"></div>
-	  <div id="opplaceholder1"></div>
 		  <div data-role="collapsible-set" data-theme="b">
-			  <div data-role="collapsible">
+			  <div data-role="collapsible" data-collapsed="false">
 				  <h3>
 					  National
 				  </h3>
@@ -46,27 +42,17 @@
 			  </div>
 			  <div data-role="collapsible">
 				  <h3>
-					  First Great Western Detail
+					  First Great Western
 				  </h3>
 				  <div>
-				  	<div id="opplaceholder2"></div>
+						<div id="placeholder2"></div>
 				  </div>
 			  </div>
-			  <div data-role="collapsible">
-				  <h3>
-					  NR Messages
-				  </h3>
-				  <div>
-				  	<div style="color:#F00;" id="placeholder4"></div>
-				  </div>
-			  </div>
-			  
 		  </div>
-		  <a data-role="button" data-transition="none" data-theme="" onClick="window.location.reload()"
+		  <a data-role="button" data-transition="none" data-theme="a" href="index.html"
 		  data-icon="forward" data-iconpos="left">
 			  Refresh Data
 		  </a>
-		  		  
 	  </div>
 	  <div data-role="tabbar" data-iconpos="top" data-theme="b">
 		  <ul>
@@ -97,53 +83,47 @@
       </div>
       <div data-role="content">
           <div>
-			  <p>
-				  <b>Reading PPM Data</b>
-					<div id="placeholder3"></div>
-				  
-			  </p>
               <p>
                   <b>
-                      National Section
+                      NATIONAL
                   </b>
-				  <table cellspacing="0" width="99%">
-				  <tr>
-				  <td>This contains the national PPM broken down by sector, and a summary of the UK in general.</td>
-				  </tr>
-				  </table>
               </p>
               <p>
                   <b>
-                      By Operator Section
+                      This contains the national PPM broken down by sector, and a summary of
+                      the UK in general.
                   </b>
-				  <table cellspacing="0" width="99%">
-				  <tr>
-				  <td>A breakdown of each individual TOC's performance</td>
-				  </tr>
-				  </table>
-                      
               </p>
               <p>
                   <b>
-                      First Great Western Section
+                      <br>
                   </b>
-				  <table cellspacing="0" width="99%">
-				  <tr>
-				  <td>A breakdown of FGW and its seperate areas</td>
-				  </tr>
-				  </table>
-				  </p>
+              </p>
               <p>
                   <b>
-                      NR Message Section
+                      BY OPERATOR
                   </b>
-              
-				  <table cellspacing="0" width="99%">
-				  <tr>
-				  <td>Urgent messages from Network Rail</td>
-				  </tr>
-				  </table>
-			  </p>
+              </p>
+              <p>
+                  <b>
+                      A breakdown of each individual TOC's performance
+                  </b>
+              </p>
+              <p>
+                  <b>
+                      <br>
+                  </b>
+              </p>
+              <p>
+                  <b>
+                      FIRST GREAT WESTERN
+                  </b>
+              </p>
+              <p>
+                  <b>
+                      A detailed breakdown of First Great Western and its seperate areas/
+                  </b>
+              </p>
           </div>
       </div>
       <div data-role="tabbar" data-iconpos="top" data-theme="b">
