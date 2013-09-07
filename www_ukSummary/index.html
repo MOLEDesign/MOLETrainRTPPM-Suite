@@ -6,8 +6,12 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		
-		<!-- Refresh every 5 mins -->
-		<meta http-equiv="refresh" content="120;URL='operator.html'">
+		<!-- Refresh every 2 mins -->
+        <script language="javascript" type="text/javascript">
+            <!--
+            window.setTimeout('window.location="operator.html"; ',10000);
+            // -->
+        </script>
 		
 		<title>UK PPM Viewer</title>
 		
@@ -28,6 +32,36 @@
 		<!-- custom scripts -->
 		<script src="assets/js/functions.js"></script>
 		<script src="assets/js/summary.js"></script>
+
+        <!-- iPad -->
+        <link href="assets/images/apple-touch-icon-72x72.png"
+              sizes="72x72"
+              rel="apple-touch-icon">
+        <link href="assets/images/apple-touch-startup-image-768x1004.png"
+              media="(device-width: 768px) and (device-height: 1024px)
+                 and (orientation: portrait)
+                 and (-webkit-device-pixel-ratio: 1)"
+              rel="apple-touch-startup-image">
+        <link href="assets/images/apple-touch-startup-image-748x1024.png"
+              media="(device-width: 768px) and (device-height: 1024px)
+                 and (orientation: landscape)
+                 and (-webkit-device-pixel-ratio: 1)"
+              rel="apple-touch-startup-image">
+
+        <!-- iPad (Retina) -->
+        <link href="assets/images/apple-touch-icon-144x144.png"
+              sizes="144x144"
+              rel="apple-touch-icon">
+        <link href="assets/images/apple-touch-startup-image-1536x2008.png"
+              media="(device-width: 768px) and (device-height: 1024px)
+                 and (orientation: portrait)
+                 and (-webkit-device-pixel-ratio: 2)"
+              rel="apple-touch-startup-image">
+        <link href="assets/images/apple-touch-startup-image-1496x2048.png"
+              media="(device-width: 768px) and (device-height: 1024px)
+                 and (orientation: landscape)
+                 and (-webkit-device-pixel-ratio: 2)"
+              rel="apple-touch-startup-image">
 		
 	</head>
 
