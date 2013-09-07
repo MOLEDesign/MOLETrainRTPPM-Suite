@@ -1,234 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<link rel="apple-touch-icon" href="apple-touch-icon.png" />
-	<title>UK PPM Viewer</title>
-	<link rel="stylesheet" href="https://s3.amazonaws.com/codiqa-cdn/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-	<link rel="stylesheet" href="my.css" />
-	<link rel="stylesheet" href="table.css" />
-	<script src="https://s3.amazonaws.com/codiqa-cdn/jquery-1.7.2.min.js"></script>
-	<script src="https://s3.amazonaws.com/codiqa-cdn/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-	<script src="my.js"></script>
-	<script src="assets/js/summary.js"></script>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		
+		<!-- Refresh every 5 mins -->
+		<meta http-equiv="refresh" content="120;URL='operator.html'">
+		
+		<title>UK PPM Viewer</title>
+		
+		<!-- define fonts -->
+		<link rel="stylesheet" href="assets/css/sourcesansproreg.css" type="text/css" charset="utf-8" />
+		<link rel="stylesheet" href="assets/css/sourcesansprosemibold.css" type="text/css" charset="utf-8" />
+		
+		<!-- site wide css -->
+		<link rel="stylesheet" href="assets/css/site.css" />
+		
+		<!-- table specific css -->
+		<link rel="stylesheet" href="assets/css/table.css" />
+		
+		<!-- define scripts -->
+		<!-- use local version of JQuery -->
+		<script src="assets/js/jquery-1.9.1.min.js"></script>
+		
+		<!-- custom scripts -->
+		<script src="assets/js/functions.js"></script>
+		<script src="assets/js/summary.js"></script>
+		
+	</head>
 
-</head>
-<body>
-  <!-- Home -->
-	<div data-role="page" id="page1">
-		<div data-theme="a" data-role="header">
-		  <h3>
-			  UK TOC RTPPM
-		  </h3>
-		</div>
-	  <div data-role="content">
-	  <div id="timestamp_placeholder"></div>
-	  <div id="opplaceholder1"></div>
-		  <div data-role="collapsible-set" data-theme="b">
-			  <div data-role="collapsible">
-				  <h3>
-					  National
-				  </h3>
-				  <div>
-						<div id="placeholder"></div>
-				  </div>
-			  </div>
-			  <div data-role="collapsible">
-				  <h3>
-					  By Operator
-				  </h3>
-				  <div>
-						<div id="placeholder1"></div>
-				  </div>
-			  </div>
-			  <div data-role="collapsible">
-				  <h3>
-					  First Great Western Detail
-				  </h3>
-				  <div>
-				  	<div id="opplaceholder2"></div>
-				  </div>
-			  </div>
-			  <div data-role="collapsible">
-				  <h3>
-					  NR Messages
-				  </h3>
-				  <div>
-				  	<div style="color:#F00;" id="placeholder4"></div>
-				  </div>
-			  </div>
-			  
-		  </div>
-		  <a data-role="button" data-transition="none" data-theme="" onClick="window.location.reload()"
-		  data-icon="forward" data-iconpos="left">
-			  Refresh Data
-		  </a>
-		  		  
-	  </div>
-	  <div data-role="tabbar" data-iconpos="top" data-theme="b">
-		  <ul>
-			  <li>
-				  <a href="#page1" data-transition="turn" data-theme="" data-icon="home">
-					  Home
-				  </a>
-			  </li>
-			  <li>
-				  <a href="#page2" data-transition="turn" data-theme="" data-icon="grid">
-					  Help
-				  </a>
-			  </li>
-			  <li>
-				  <a href="#page4" data-transition="turn" data-theme="" data-icon="info">
-					  Info
-				  </a>
-			  </li>
-		  </ul>
-	  </div>
-	</div>
-  <!-- Help -->
-  <div data-role="page" id="page2">
-      <div data-theme="a" data-role="header">
-          <h3>
-              HELP &amp; DOCS
-          </h3>
-      </div>
-      <div data-role="content">
-          <div>
-			  <p>
-				  <b>Reading PPM Data</b>
-					<div id="placeholder3"></div>
-				  
-			  </p>
-              <p>
-                  <b>
-                      National Section
-                  </b>
-				  <table cellspacing="0" width="99%">
-				  <tr>
-				  <td>This contains the national PPM broken down by sector, and a summary of the UK in general.</td>
-				  </tr>
-				  </table>
-              </p>
-              <p>
-                  <b>
-                      By Operator Section
-                  </b>
-				  <table cellspacing="0" width="99%">
-				  <tr>
-				  <td>A breakdown of each individual TOC's performance</td>
-				  </tr>
-				  </table>
-                      
-              </p>
-              <p>
-                  <b>
-                      First Great Western Section
-                  </b>
-				  <table cellspacing="0" width="99%">
-				  <tr>
-				  <td>A breakdown of FGW and its seperate areas</td>
-				  </tr>
-				  </table>
-				  </p>
-              <p>
-                  <b>
-                      NR Message Section
-                  </b>
-              
-				  <table cellspacing="0" width="99%">
-				  <tr>
-				  <td>Urgent messages from Network Rail</td>
-				  </tr>
-				  </table>
-			  </p>
-          </div>
-      </div>
-      <div data-role="tabbar" data-iconpos="top" data-theme="b">
-          <ul>
-              <li>
-                  <a href="#page1" data-transition="turn" data-theme="" data-icon="home">
-                      Home
-                  </a>
-              </li>
-              <li>
-                  <a href="#page2" data-transition="turn" data-theme="" data-icon="grid">
-                      Help
-                  </a>
-              </li>
-              <li>
-                  <a href="#page4" data-transition="turn" data-theme="" data-icon="info">
-                      Info
-                  </a>
-              </li>
-          </ul>
-      </div>
-  </div>
-  <!-- Info -->
-  <div data-role="page" id="page4">
-      <div data-theme="a" data-role="header">
-          <h3>
-              INFO
-          </h3>
-      </div>
-      <div data-role="content">
-          <h2>
-              FGW PPM Datafeed
-          </h2>
-          <h2>
-              Version 1.1.0
-          </h2>
-          <div>
-              <p>
-                  <b>
-                      This application is based on open source code, with data from National
-                      Rail.
-                  </b>
-              </p>
-              <p>
-                  <b>
-                      No responsibility can be taken for innaccurate data supplied by Nation
-                      rail.
-                  </b>
-              </p>
-              <p>
-                  <b>
-                      Please report any problems with this application to
-                  </b>
-              </p>
-              <p>
-                  <a data-mce-href="mailto:fgw-it@firstgroup.com" href="mailto:fgw-it@firstgroup.com"
-                  style="">
-                      <b>
-                          fgw-it@firstgroup.com
-                      </b>
-                  </a>
-              </p>
-          </div>
-      </div>
-      <div data-role="tabbar" data-iconpos="top" data-theme="b">
-          <ul>
-              <li>
-                  <a href="#page1" data-transition="turn" data-theme="" data-icon="home">
-                      Home
-                  </a>
-              </li>
-              <li>
-                  <a href="#page2" data-transition="turn" data-theme="" data-icon="grid">
-                      Help
-                  </a>
-              </li>
-              <li>
-                  <a href="#page4" data-transition="turn" data-theme="" data-icon="info">
-                      Info
-                  </a>
-              </li>
-          </ul>
-      </div>
-  </div>
+	<body>
+	<span class="siteheading"><div id="timestamp_placeholder"></div></span>
+		
+		<!-- define placeholder, JQuery will load content into this div -->
+		<div id="placeholder1"></div>
+		<p></p>
+		<div id="placeholder2"></div>
+		
+		<p></p>
+		<div id="placeholder3"></div>
+		<p></p>
+		<div id="placeholder4"></div>
+		
+	</body>
 
-  
-</body>
 </html>
