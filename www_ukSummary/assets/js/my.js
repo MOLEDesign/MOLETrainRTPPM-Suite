@@ -1,17 +1,5 @@
 $(window).load(function() {
-	$.getJSON('http://mobileapps.moledesign.biz/uksummary/output.json', function (data) {
-		
-		
-		var epoch = parseInt(data.RTPPMDataMsgV1.timestamp)
-		var myDate = new Date(epoch);
-				
-		var timestamp_information = '<p align="center">';
-		timestamp_information += 'UK Real Time PPM - Last update : ' + myDate.toGMTString();
-		timestamp_information += '</p>';
-		// load the content into timestamp_placeholder div
-		$("#timestamp_placeholder").html(timestamp_information);
-		
-		
+	$.getJSON('http://development.moledesign.biz/node/output.json', function (data) {
 		var placeholder_output = '<table cellspacing="0" width="99%">';
 		placeholder_output += '<thead>';
 		placeholder_output += '<tr>';
@@ -55,11 +43,11 @@ $(window).load(function() {
 		placeholder1_output += "<thead>";
 		placeholder1_output += "<tr>";
 		placeholder1_output += "<th>Operator</th>";
-		placeholder1_output += "<th width='13%'>PPM</th>";
-		placeholder1_output += "<th width='13%'>PPM (2 hours)</th>";
+		placeholder1_output += "<th width='10%'>PPM</th>";
+		placeholder1_output += "<th width='10%'>PPM (2 hours)</th>";
 		placeholder1_output += "<th>Operator</th>";
-		placeholder1_output += "<th width='13%'>PPM</th>";
-		placeholder1_output += "<th width='13%'>PPM (2 hours)</th>";
+		placeholder1_output += "<th width='10%'>PPM</th>";
+		placeholder1_output += "<th width='10%'>PPM (2 hours)</th>";
 		placeholder1_output += "</tr>";
 		placeholder1_output += "</thead>";
 		placeholder1_output += "<tbody>";
@@ -90,19 +78,7 @@ $(window).load(function() {
 			}
 			
 			
-			placeholder1_output += '<td>';
-			if (data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].code == '25') {
-				placeholder1_output += '<span style="font-weight:bold; color:blue; text-transform:uppercase;">';
-			}
-
-			placeholder1_output += data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].name + ' ' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].keySymbol;
-
-			if (data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].code == '25') {
-				placeholder1_output += '</span>';
-			}
-
-			
-			placeholder1_output += '</td>';
+			placeholder1_output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].name + ' ' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].keySymbol +'</td>';
 			placeholder1_output += '<td class="cell' + operatorcolorppm + '">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].PPM.text + '</td>';
 			placeholder1_output += '<td class="cell' + operatorcolorrppm + '">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.Operator[i].RollingPPM.text + '</td>';
 			if (loopcount % 2 ==0) {
@@ -118,8 +94,10 @@ $(window).load(function() {
 		
 		var placeholder3_output = '<table cellspacing="0" width="99%">';
 		placeholder3_output += '<tr>';
-		placeholder3_output += '<td>' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.WebFixedMsg2 + '. ';
-		placeholder3_output +=  data.RTPPMDataMsgV1.RTPPMData.NationalPage.WebFixedMsg1 + '</td>';
+		placeholder3_output += '<td colspan="3">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.WebFixedMsg2 + '</td>';
+		placeholder3_output += '</tr>';
+		placeholder3_output += '<tr>';
+		placeholder3_output += '<td colspan="3">' + data.RTPPMDataMsgV1.RTPPMData.NationalPage.WebFixedMsg1 + '</td>';
 		placeholder3_output += '</tr>';
 		
 		placeholder3_output += '</tbody>';

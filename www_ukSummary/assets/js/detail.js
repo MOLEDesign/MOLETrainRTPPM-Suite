@@ -1,5 +1,5 @@
 	$(window).load(function() {
-		$.getJSON('http://development.moledesign.biz/node/output.json', function (data) {
+		$.getJSON('http://mobileapps.moledesign.biz/uksummary/output.json', function (data) {
 			
 		var epoch = parseInt(data.RTPPMDataMsgV1.timestamp)
 		var myDate = new Date(epoch);
